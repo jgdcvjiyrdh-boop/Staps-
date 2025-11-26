@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Ad Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .main-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 2s forwards;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: #ff5252;
+        }
+        
+        /* Start Ad Styles */
+        .start-ad {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeOut 1s ease-out 3s forwards;
+        }
+        
+        .ad-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            animation: popIn 0.8s ease-out 0.5s forwards;
+            color: #333;
+        }
+        
+        .ad-logo {
+            font-size: 3rem;
+            color: #2575fc;
+            margin-bottom: 1rem;
+        }
+        
+        .ad-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #2575fc;
+        }
+        
+        .ad-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .ad-button {
+            display: inline-block;
+            background: #2575fc;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+        
+        .ad-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: #1a68e8;
+        }
+        
+        .ad-countdown {
+            font-size: 1rem;
+            color: #ff6b6b;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        
+        .ad-footer {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        /* Animations */
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .ad-content {
+                max-width: 90%;
+                padding: 1.5rem;
+            }
+            
+            .ad-title {
+                font-size: 1.8rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Ad -->
+    <div class="start-ad" id="startAd">
+        <div class="ad-content">
+            <div class="ad-logo">🚀</div>
+            <h2 class="ad-title">Special Limited Time Offer!</h2>
+            <p class="ad-subtitle">Get exclusive access to premium features with our special promotion. Don't miss this opportunity!</p>
+            
+            <div class="ad-buttons">
+                <a href="https://warhealthy.com/gfn023wsd?key=938a830083dc4d80557763a7b3ee3441" class="ad-button" id="smartLink">
+                    Claim Your Offer Now
+                </a>
+                <a href="#" class="ad-button secondary" id="skipAd">
+                    Skip This Ad
+                </a>
+            </div>
+            
+            <div class="ad-countdown" id="countdown">This ad will close in 3 seconds...</div>
+            <div class="ad-footer">Limited time offer. Terms and conditions apply.</div>
+        </div>
+    </div>
+    
+    <!-- Main Content (hidden initially) -->
+    <div class="main-content">
+        <h1>Amazing Product</h1>
+        <p>Discover how our innovative solution can revolutionize your daily tasks. With cutting-edge features and an intuitive interface, you'll accomplish more in less time.</p>
+        <a href="https://warhealthy.com/gfn023wsd?key=938a830083dc4d80557763a7b3ee3441" class="cta-button">Get Started Now</a>
+    </div>
+
+    <script>
+        // Countdown for the start ad
+        let countdownElement = document.getElementById('countdown');
+        let countdown = 3;
+        let countdownInterval;
+        
+        function startCountdown() {
+            countdownInterval = setInterval(function() {
+                countdown--;
+                if (countdown > 0) {
+                    countdownElement.textContent = `This ad will close in ${countdown} second${countdown > 1 ? 's' : ''}...`;
+                } else {
+                    countdownElement.textContent = "Closing now...";
+                    clearInterval(countdownInterval);
+                    closeAd();
+                }
+            }, 1000);
+        }
+        
+        function closeAd() {
+            document.getElementById('startAd').style.animation = 'fadeOut 0.5s ease-out forwards';
+            setTimeout(function() {
+                document.getElementById('startAd').style.display = 'none';
+            }, 500);
+        }
+        
+        // Start the countdown when page loads
+        window.addEventListener('load', startCountdown);
+        
+        // Allow user to skip the ad by clicking the skip button
+        document.getElementById('skipAd').addEventListener('click', function(e) {
+            e.preventDefault();
+            clearInterval(countdownInterval);
+            closeAd();
+        });
+        
+        // Track clicks on the smart link
+        document.getElementById('smartLink').addEventListener('click', function() {
+            // Here you could add analytics tracking
+            console.log('Smart link clicked - redirecting to: https://warhealthy.com/gfn023wsd?key=938a830083dc4d80557763a7b3ee3441');
+        });
+    </script>
+</body>
+</html>
